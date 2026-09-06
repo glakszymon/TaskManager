@@ -16,10 +16,10 @@ public class Converter {
                   {
                     "id": %d,
                     "name": "%s",
-                    "status": %b
+                    "status": "%s"
                   }""";
 
-            sb.append(taskTemplate.formatted(t.Id, escapeJson(t.Name), t.Status));
+            sb.append(taskTemplate.formatted(t.Id, escapeJson(t.Name), escapeJson(t.Status)));
 
             if (i < tasks.size() - 1) {
                 sb.append(",");
@@ -80,10 +80,16 @@ public class Converter {
 
         int statusIndex = rec.indexOf("\"status\":");
         int braceIndex = rec.indexOf("}", statusIndex);
-        String rawStatus = rec.substring(statusIndex + 9, braceIndex).trim();
-        boolean status = Boolean.parseBoolean(rawStatus);
+        String rawStatus = rec.substring(statusIndex + 11, braceIndex).trim();
+        if (rawStatus.endsWith("\"")) {
+            rawStatus = rawStatus.substring(0, rawStatus.length() - 1);
+        }
 
-        return new Task(id, rawName, status);
+        var t = new Task();
+        t.Name = rawName;
+        t.Id = id;
+        t.Status = rawStatus;
+        return t;
     }
 
     private String escapeJson(String input) {
