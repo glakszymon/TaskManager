@@ -117,7 +117,13 @@ private static void handleAdd(String[] args) throws IOException {
     var record = new Task();
     record.Name = name;
     record.Status = "todo";
-    record.Id = tasks.getLast().Id + 1;
+    if(tasks.isEmpty())
+    {
+        record.Id = 0;
+    }else
+    {
+        record.Id = tasks.getLast().Id + 1;
+    }
 
     tasks.add(record);
     Save(tasks);
