@@ -37,19 +37,21 @@ void main(String[] args) throws IOException {
     }
 }
 
-private static void handleHelp()
-{
-    IO.println("Task Manager");
-    IO.println("Użycie: task-manager <komenda> [opcje]");
-    IO.println("Commands:");
-    IO.println("add \"[task name]\" | Dodaj nowy rekord");
-    IO.println("update [task id] \"[task new name]\" | Aktualizuj rekord o podanym id na nowa nazwe");
-    IO.println("delete [task id] | Usuń rekord o podanym id");
-    IO.println("mark-in-progress [task id] | Zmień status na in-progress rekordu o podanym id");
-    IO.println("mark-done [task id] | Zmień status na done rekordu o podanym id");
-    IO.println("list | Wypisz wszystkie rekordy");
-    IO.println("list done | Wypisz rekordy z statusem done");
-    IO.println("list in-progress | Wypsz wszystkie rekordy z statusem in-progress");
+private static void handleHelp() {
+    IO.println("==================================================");
+    IO.println("                TASK MANAGER CLI                  ");
+    IO.println("==================================================");
+    IO.println("Użycie: java -jar TaskManager.jar <komenda> [argumenty]\n");
+    IO.println("Dostępne komendy:");
+    IO.println("  add \"[nazwa]\"                - Dodaje nowe zadanie");
+    IO.println("  update [id] \"[nowa nazwa]\"   - Modyfikuje nazwę zadania o podanym ID");
+    IO.println("  delete [id]                  - Usuwa zadanie o podanym ID");
+    IO.println("  mark-in-progress [id]        - Zmienia status zadania na 'in-progress'");
+    IO.println("  mark-done [id]               - Zmienia status zadania na 'done'");
+    IO.println("  list                         - Wyświetla wszystkie zadania");
+    IO.println("  list [status]                - Wyświetla zadania o podanym statusie (np. todo, done)");
+    IO.println("  --help                       - Wyświetla tę instrukcję pomocy");
+    IO.println("==================================================");
 }
 
 private static void handleDone(String[] args) throws IOException {
