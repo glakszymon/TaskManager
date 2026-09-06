@@ -25,7 +25,7 @@ A simple command-line interface (CLI) application for managing tasks. You can ad
 ```bash
 git clone https://github.com/glakszymon/TaskManager.git
 cd TaskManager
-javac Main.java Models/*.java
+javac -d out src/Main.java src/Models/*.java
 
 ```
 
