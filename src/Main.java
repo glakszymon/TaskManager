@@ -29,9 +29,27 @@ void main(String[] args) throws IOException {
         case "list":
             handleList(args);
             break;
+        case "--help":
+            handleHelp();
+            break;
         default:
             IO.println("Nieznana komenda: " + command);
     }
+}
+
+private static void handleHelp()
+{
+    IO.println("Task Manager");
+    IO.println("Użycie: task-manager <komenda> [opcje]");
+    IO.println("Commands:");
+    IO.println("add \"[task name]\" | Dodaj nowy rekord");
+    IO.println("update [task id] \"[task new name]\" | Aktualizuj rekord o podanym id na nowa nazwe");
+    IO.println("delete [task id] | Usuń rekord o podanym id");
+    IO.println("mark-in-progress [task id] | Zmień status na in-progress rekordu o podanym id");
+    IO.println("mark-done [task id] | Zmień status na done rekordu o podanym id");
+    IO.println("list | Wypisz wszystkie rekordy");
+    IO.println("list done | Wypisz rekordy z statusem done");
+    IO.println("list in-progress | Wypsz wszystkie rekordy z statusem in-progress");
 }
 
 private static void handleDone(String[] args) throws IOException {
